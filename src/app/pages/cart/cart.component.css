@@ -1,0 +1,102 @@
+/** grid **/
+  main {
+	 display: grid;
+	 grid-gap: 1rem;
+}
+ main {
+	 grid-template: "content" "summary" "actions" "help" "promo";
+}
+ @media (min-width: 50rem) {
+	 main {
+		 grid-template: "promo promo" "content summary" "content actions" "content help";
+		 grid-template-columns: auto 20rem;
+	}
+}
+ .summary {
+	 grid-area: summary;
+}
+ .actions {
+	 grid-area: actions;
+}
+ .cart {
+	 grid-area: content;
+}
+
+/** styling **/
+ @media (min-width: 50rem) {
+	main {
+		 max-width: 60rem;
+	}
+}
+ .summary {
+	 display: flex;
+	 justify-content: space-between;
+	 font-size: 18px;
+	 background: rgba(244, 243, 239);
+}
+ .summary .total {
+	 font-family: monospace;
+	 text-align: right;
+}
+ .cart .item {
+	 display: flex;
+	 justify-content: space-between;
+	 font-family: monospace;
+	 font-size: 18px;
+}
+ .cart .item:not(:last-child) {
+	 margin-bottom: 0.5rem;
+	 padding-bottom: 0.5rem;
+	 border-bottom: 1px dotted rgba(96, 112, 159, 1);
+}
+ .cart .name {
+	 font-size: 18px;
+	 font-weight: 400;
+	 margin: 0;
+}
+ .cart .price {
+	 font-family: monospace;
+	 margin: 0;
+}
+ @media (min-width: 50rem) {
+	 .cart {
+		 padding: 2rem 1rem;
+	}
+	 .cart .name, .cart .price {
+		 font-size: 16px;
+	}
+	 .cart .item:not(:last-child) {
+		 margin-bottom: 1rem;
+		 padding-bottom: 1rem;
+	}
+}
+ .actions {
+	 background: rgba(244, 243, 239);
+	 text-align: right;
+}
+
+
+ section {
+	 background: rgba(244, 243, 239);
+	 box-shadow: 0 4px 4px 2px rgba(22, 24, 29, 0.2);
+	 border-radius: 3px;
+	 padding: 1rem;
+}
+ section {
+	 min-height: 3rem;
+ }
+
+ ul {
+	 list-style: none;
+	 padding: 0;
+	 margin: 0;
+}
+ 
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}

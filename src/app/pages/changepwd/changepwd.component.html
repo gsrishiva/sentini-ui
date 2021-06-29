@@ -1,0 +1,34 @@
+<div class="card" style="width: 100%;margin:0 auto; margin-top: 5rem;">
+    <div class="card-body">
+        Enter New Password to reset password.
+        <div class="form-row">
+            <div class="col-md-6">
+                <form [formGroup]="resetForm" (ngSubmit)="onSubmit()">
+
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">New Password</label>
+                        <input type="password" [(ngModel)]="password" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required">Password is required</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Confirm Password</label>
+                        <input type="password" formControlName="cnfpassword" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.cnfpassword.errors }" />
+                        <div *ngIf="submitted && f.cnfpassword.errors" class="invalid-feedback">
+                            <div *ngIf="f.cnfpassword.errors.required">Password is required</div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary"><span *ngIf="loading"
+                            class="spinner-border spinner-border-sm mr-1"></span>submit!</button>
+                    <button type="submit" class="btn btn-primary float-right" (click)="gotologin()"><span
+                            *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

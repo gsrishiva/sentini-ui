@@ -1,0 +1,16 @@
+
+#ex3 .fa-stack[data-count]:after{
+  position:absolute;
+  right:20%;
+  top:10%;
+  content: attr(data-count);
+  font-size:30%;
+  padding:.6em;
+  border-radius:50%;
+  line-height:.8em;
+  color: white;
+  background:rgba(255,0,0,.85);
+  text-align:center;
+  min-width: 1em;
+  font-weight:bold;
+}

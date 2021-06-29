@@ -1,0 +1,188 @@
+<p-toast key="myKey1"></p-toast>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card demo-icons">
+            <div class="card-header">
+                <h5 class="card-title">Sample Products</h5>
+                <p class="card-category">Handcrafted by our Men from
+                    <a href="">SENTINI</a>
+                </p>
+            </div>
+            <nav *ngIf="mainPage && !subPage && !prodPage" aria-label="breadcrumb" role="navigation">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page">Samples</li>
+                </ol>
+            </nav>
+            <nav *ngIf="subPage && !mainPage && !prodPage" aria-label="breadcrumb" role="navigation">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item" (click)="showProdPage(1,'')">Samples</li>
+                    <li class="breadcrumb-item active" aria-current="page">Categories</li>
+                </ol>
+            </nav>
+            <nav *ngIf=" prodPage && !mainPage && !subPage" aria-label="breadcrumb" role="navigation">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">Samples</li>
+                    <li class="breadcrumb-item" (click)="showProdPage(2,'')">Categories</li>
+                    <li class="breadcrumb-item active" aria-current="page">Products</li>
+                </ol>
+            </nav>
+
+
+            <div class="row" *ngIf="mainPage" style="justify-content: center;margin: 30px;">
+                <div class="card cus-card cardzoom" #btn1 style="width: 15rem;"
+                    (click)="getSamples();  showProdPage(2,'');" id="Pipes">
+                    <img class="card-img-top" src="assets/img/1.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">Samples</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">Some Samples</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="subPage && !mainPage && !prodPage">
+                <div class="row" style="justify-content: center;margin: 0px;">
+                    <div *ngFor="let item of arr2; let i=index;let product">
+                        <div class="card cus-card" style="width: 15rem;">
+                            <img class="card-img-top" src="{{item.imgUrl}}" (click)="showProdPage(3,item);">
+                            <div class="card-body">
+                                <p class="card-title"><b>{{item.itemName}}</b></p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <div class="row r-margin" *ngIf="prodPage && !mainPage && !subPage">
+                <p-toast key="myKey1"></p-toast>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card demo-icons">
+                            <div class="card-header">
+                                <h5 class="card-title">CPVC Products</h5>
+                                <p class="card-category">Handcrafted by our Men from
+                                    <a href="">SENTINI</a>
+                                </p>
+                            </div>
+                            <nav *ngIf="mainPage && !subPage && !prodPage" aria-label="breadcrumb" role="navigation">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item active" aria-current="page">CPVC</li>
+                                </ol>
+                            </nav>
+                            <nav *ngIf="subPage && !mainPage && !prodPage" aria-label="breadcrumb" role="navigation">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item" (click)="showProdPage(1,'')">CPVC</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Categories</li>
+                                </ol>
+                            </nav>
+                            <nav *ngIf=" prodPage && !mainPage && !subPage" aria-label="breadcrumb" role="navigation">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">CPVC</li>
+                                    <li class="breadcrumb-item" (click)="showProdPage(2,'')">Categories</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Products</li>
+                                </ol>
+                            </nav>
+
+
+                            <div class="row" *ngIf="mainPage" style="justify-content: center;margin: 30px;">
+                                <div class="card cus-card cardzoom" #btn1 style="width: 15rem;"
+                                    (click)="toggle(btn1);  showProdPage(2,'');" id="Pipes">
+                                    <img class="card-img-top" src="assets/img/1.png" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h4 class="card-title">CPVC Pipes</h4>
+                                        <h6 class="card-subtitle mb-2 text-muted">CPVC PLUMBING SYSTEM FOR HOT & COLD
+                                            WATER</h6>
+                                    </div>
+                                </div>
+                                <div class="card cus-card cardzoom" #btn2 style="width: 15rem;"
+                                    (click)="toggle(btn2); showProdPage(2,'');" id="Fittings">
+                                    <img class="card-img-top" src="assets/img/New category/CPVC Fittings.jpg"
+                                        alt="Card image cap">
+                                    <div class="card-body">
+                                        <h4 class="card-title">CPVC Fittings</h4>
+                                        <h6 class="card-subtitle mb-2 text-muted">CPVC PLUMBING FITTINGS</h6>
+                                    </div>
+                                </div>
+                                <div class="card cus-card cardzoom" #btn3 style="width: 15rem;"
+                                    (click)="toggle(btn3); showProdPage(2,'');" id="Solvents">
+                                    <img class="card-img-top" src="assets/img/40-Solvent Cement.jpg"
+                                        alt="Card image cap">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Solvents</h4>
+                                        <h6 class="card-subtitle mb-2 text-muted">FOR CPVC</h6>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div *ngIf="subPage && !mainPage && !prodPage">
+                                <div class="row" style="justify-content: center;margin: 0px;">
+                                    <div *ngFor="let item of arr2; let i=index;let product">
+                                        <div class="card cus-card" style="width: 15rem;">
+                                            <img class="card-img-top" src="{{item.imgUrl}}"
+                                                (click)="showProdPage(3,item);">
+                                            <div class="card-body">
+                                                <p class="card-title"><b>{{item.itemName}}</b></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+                            <div class="row r-margin" *ngIf="prodPage && !mainPage && !subPage">
+                                <p-table [value]="prodArr">
+                                    <!-- <p-table [value]="prodArr" #dt2 [value]="products" dataKey="id" [rows]="10"
+                                    [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
+                                    styleClass="p-datatable-products" [paginator]="true"
+                                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                    [globalFilterFields]="['item','size','sku_Code']"> -->
+                                    <ng-template pTemplate="header">
+                                        <!-- <div class="p-d-flex">
+                                            <span class="p-input-icon-right p-ml-right">
+                                                <i class="pi pi-search"></i>
+                                                <input pInputText type="text"
+                                                    (input)="dt2.filterGlobal($event.target.value, 'contains')"
+                                                    placeholder="Search Products" />
+                                            </span>
+                                        </div> -->
+                                        <tr>
+                                            <th>Skucode</th>
+                                            <th>Description</th>
+                                            <th>Size</th>
+                                            <th>Std Pkg</th>
+                                            <th>MRP</th>
+                                            <th>Quantity</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </ng-template>
+                                    <ng-template pTemplate="body" let-product>
+                                        <tr>
+                                            <td>{{product.sku_Code}}</td>
+                                            <td>{{product.sku_Description}}</td>
+                                            <td>{{product.size}}</td>
+                                            <td>{{product.std_Pkg}}</td>
+                                            <td>{{product.price}}</td>
+                                            <td>
+                                                <input min="1" [(ngModel)]="product.quantity" name="qty" type="number"
+                                                    class="form-control col-md-12" id="qty">
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn  btn-primary btn-round"
+                                                    (click)="addProductToCart(product,product.quantity, index)">Add
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </ng-template>
+                                </p-table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

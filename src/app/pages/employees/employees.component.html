@@ -1,0 +1,309 @@
+<p-toast key="myKey1"></p-toast>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card demo-icons">
+            <div class="card-header">
+                <h5 class="card-title">All Employees</h5>
+            </div>
+            <div class="card-body all-icons">
+                <div id="icons-wrapper">
+                    <section>
+                        <div class="row" *ngIf="emplistPage && !empaddPage"
+                            style="justify-content: center;margin: 30px;">
+                            <button (click)="showPage(2)" *ngIf="emplistPage" class="btn btn-info text-right">Add
+                                Employee</button>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class=" text-primary">
+                                        <th>
+                                            Emp ID
+                                        </th>
+                                        <th>
+                                            Employee Name
+                                        </th>
+                                        <th>
+                                            Contact
+                                        </th>
+                                        <th>
+                                            City
+                                        </th>
+                                        <th>
+                                            State
+                                        </th>
+                                        <th>Actions</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let employee of employees">
+                                            <td>{{employee.empId}}</td>
+                                            <td>{{employee.empName}}</td>
+                                            <td>{{employee.personal_ContactNo}}</td>
+                                            <td>{{employee.city}}</td>
+                                            <td>{{employee.state}}</td>
+                                            <td><i class="fa fa-pencil" (click)="open(mymodal,employee.id)"></i></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <ng-template #mymodal let-modal>
+                                    <div class="modal-header">
+                                        <button type="button" class="close" aria-label="Close"
+                                            (click)="modal.dismiss('Cross click')">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h6>Edit Employee</h6>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="item">Employee Id</label>
+                                                <input type="text" class="form-control" [(ngModel)]="empInfo.empId">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="item">Employee Nam</label>
+                                                <input type="text" class="form-control" [(ngModel)]="empInfo.empName">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="item">Employee MailId</label>
+                                                <input type="text" class="form-control" [(ngModel)]="empInfo.empMail">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="item">Employee Contact</label>
+                                                <input type="text" class="form-control"
+                                                    [(ngModel)]="empInfo.personal_ContactNo">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="std_Pkg">Reporting To</label>
+                                                <input type="text" class="form-control"
+                                                    [(ngModel)]="empInfo.reporting_To">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="Date Of Joining"></label>
+                                                <input type="date" class="form-control" [(ngModel)]="empInfo.doj">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="sku_description">State</label>
+                                                <select id="state" class="form-control" [(ngModel)]="empInfo.state">
+                                                    <option selected>Choose...</option>
+                                                    <option>Andhra Pradesh</option>
+                                                    <option>Arunachal Pradesh</option>
+                                                    <option>Assam</option>
+                                                    <option>Bihar</option>
+                                                    <option>Chhattisgarh</option>
+                                                    <option>Delhi</option>
+                                                    <option>Goa</option>
+                                                    <option>Gujarat</option>
+                                                    <option>Haryana</option>
+                                                    <option>Himachal Pradesh</option>
+                                                    <option>Jharkhand</option>
+                                                    <option>Karnataka-North</option>
+                                                    <option>Karnataka-South</option>
+                                                    <option>Kerala</option>
+                                                    <option>Madhya Pradesh</option>
+                                                    <option>Maharashtra</option>
+                                                    <option>Manipur</option>
+                                                    <option>Meghalaya</option>
+                                                    <option>Mizoram</option>
+                                                    <option>Nagaland</option>
+                                                    <option>Odisha-North</option>
+                                                    <option>Odisha-South</option>
+                                                    <option>Punjab</option>
+                                                    <option>Rajasthan</option>
+                                                    <option>Sikkim</option>
+                                                    <option>Tamil Nadu-North</option>
+                                                    <option>Tamil Nadu-South</option>
+                                                    <option>Telangana</option>
+                                                    <option>Tripura</option>
+                                                    <option>Uttar Pradesh</option>
+                                                    <option>Uttarakhand</option>
+                                                    <option>West Bengal</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="price">Head Quarters</label>
+                                                <input type="text" class="form-control"
+                                                    [(ngModel)]="empInfo.headQuarters">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="dealDiscount">Designation</label>
+                                                <select id="designation" class="form-control"
+                                                    [(ngModel)]="empInfo.designation" value="empInfo.degignation">
+                                                    <option selected>Choose Designation...
+                                                    </option>
+                                                    <option>Sentini Demand Executive</option>
+                                                    <option>Sales Excutive</option>
+                                                    <option>Senior Sales Excutive</option>
+                                                    <option>ASM</option>
+                                                    <option>Jr ASM</option>
+                                                    <option>Sr ASM</option>
+                                                    <option>Assitant Manager</option>
+                                                    <option>Senior Manager</option>
+                                                    <option>DGM</option>
+                                                    <option>State Head</option>
+                                                    <option>RSM</option>
+                                                    <option>AVP</option>
+                                                    <option>VP</option>
+                                                    <option>COO</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="disDiscount">Address</label>
+                                                <input type="text" class="form-control" [(ngModel)]="empInfo.address">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label>City</label>
+                                                <input type="text" class="form-control" [(ngModel)]="empInfo.city" />
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label>PinCode</label>
+                                                <input type="text" class="form-control" [(ngModel)]="empInfo.pincode" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-info text-right"
+                                            (click)="modal.close('Save click');editEmployee()">Save</button>
+                                    </div>
+                                </ng-template>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="empaddPage && !emplistPage"
+                            style="justify-content: center;margin: 30px;">
+
+                            <div class="card">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <button (click)="showPage(1)" *ngIf="empaddPage"
+                                            class="btn btn-info text-right">Back to
+                                            Employee</button>
+                                    </div>
+                                </div>
+                                <form [formGroup]="empForm" (ngSubmit)="registerEmployee()">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <input type="text" class="form-control" placeholder="Employee Id"
+                                                formControlName="empId"
+                                                [ngClass]="{ 'is-invalid': submitted && f.empId.errors }">
+                                            <div *ngIf="submitted && f.empId.errors" class="invalid-feedback">
+                                                <div *ngIf="f.empId.errors.required">Emp ID is required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <input type="text" class="form-control" placeholder="Employee Name"
+                                                formControlName="empName">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <input type="text" class="form-control" placeholder="Employee mailID"
+                                                formControlName="empMail">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <input type="text" class="form-control" placeholder="Employee Contact No"
+                                                formControlName="empContact_no">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <input type="text" class="form-control" placeholder="Official Contact No"
+                                                formControlName="personal_ContactNo">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <input type="text" class="form-control" placeholder="Reporting To"
+                                                formControlName="reporting_To">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <input type="date" class="form-control" placeholder="Date Of Joining"
+                                                formControlName="doj">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <select id="state" class="form-control" formControlName="state">
+                                                <option selected>Choose...</option>
+                                                <option>Andhra Pradesh</option>
+                                                <option>Arunachal Pradesh</option>
+                                                <option>Assam</option>
+                                                <option>Bihar</option>
+                                                <option>Chhattisgarh</option>
+                                                <option>Delhi</option>
+                                                <option>Goa</option>
+                                                <option>Gujarat</option>
+                                                <option>Haryana</option>
+                                                <option>Himachal Pradesh</option>
+                                                <option>Jharkhand</option>
+                                                <option>Karnataka-North</option>
+                                                <option>Karnataka-South</option>
+                                                <option>Kerala</option>
+                                                <option>Madhya Pradesh</option>
+                                                <option>Maharashtra</option>
+                                                <option>Manipur</option>
+                                                <option>Meghalaya</option>
+                                                <option>Mizoram</option>
+                                                <option>Nagaland</option>
+                                                <option>Odisha-North</option>
+                                                <option>Odisha-South</option>
+                                                <option>Punjab</option>
+                                                <option>Rajasthan</option>
+                                                <option>Sikkim</option>
+                                                <option>Tamil Nadu-North</option>
+                                                <option>Tamil Nadu-South</option>
+                                                <option>Telangana</option>
+                                                <option>Tripura</option>
+                                                <option>Uttar Pradesh</option>
+                                                <option>Uttarakhand</option>
+                                                <option>West Bengal</option>
+                                            </select>
+
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <input type="text" class="form-control" placeholder="Head Quarters"
+                                                formControlName="headQuarters">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <select id="designation" class="form-control" formControlName="designation">
+                                                <option selected>Choose Designation...</option>
+                                                <option>Sentini Demand Executive</option>
+                                                <option>Sales Excutive</option>
+                                                <option>Senior Sales Excutive</option>
+                                                <option>ASM</option>
+                                                <option>Jr ASM</option>
+                                                <option>Sr ASM</option>
+                                                <option>Assitant Manager</option>
+                                                <option>Senior Manager</option>
+                                                <option>DGM</option>
+                                                <option>State Head</option>
+                                                <option>RSM</option>
+                                                <option>AVP</option>
+                                                <option>VP</option>
+                                                <option>COO</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <input type="text" class="form-control" placeholder="Address"
+                                                formControlName="address">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <input type="city" class="form-control" placeholder="City"
+                                                formControlName="city">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <input type="pincode" class="form-control" placeholder="Pincode"
+                                                formControlName="pincode">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <button type="submit" [disabled]="!empForm.valid"
+                                            class="btn btn-info text-right">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

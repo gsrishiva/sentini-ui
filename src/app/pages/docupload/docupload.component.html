@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card demo-icons">
+            <div class="card-header">
+                <form [formGroup]="uploadForm" (ngSubmit)="uploadDocs()">
+                    <div class="card">
+                        <h5 class="card-title">Upload your Business Documents to place Order</h5>
+                        <!-- <p-fileUpload name="demo[]" (onUpload)="onUpload($event)" multiple="multiple" accept="image/*"
+                            maxFileSize="1000000">
+                            <ng-template pTemplate="content">
+                                <ul *ngIf="uploadedFiles.length">
+                                    <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                                </ul>
+                            </ng-template>
+                        </p-fileUpload> -->
+                    </div>
+                    <div>
+                        <h6>1.3 yrs Audited Balance Sheet of Firm</h6>
+                        <input type="file" name="auditedBalanceSheet" (change)="onFileSelect($event)" />
+                    </div>
+                    <div>
+                        <h6>2.Latest 1 yr Bank Statement</h6>
+                        <input type="file" name="latestBankStatement" (change)="onFileSelect($event)" />
+                    </div>
+                    <div>
+                        <h6>3.Proof of Identity and address of the Proprietary Concern/Firm/Company</h6>
+                        <input type="file" name="proofOfPropritetary" (change)="onFileSelect($event)" />
+                    </div>
+                    <div>
+                        <h6>4.Proof of Identity and address of the Authorized Signatory</h6>
+                        <input type="file" name="proofOfAuthSignatory" (change)="onFileSelect($event)" />
+                    </div>
+                    <div>
+                        <h6>5.GST</h6>
+                        <input type="file" name="gstDoc" (change)="onFileSelect($event)" />
+                    </div>
+                    <div>
+                        <h6>6.PAN Card</h6>
+                        <input type="file" name="panCardDoc" (change)="onFileSelect($event)" />
+                    </div>
+                    <div>
+                        <h6>7.Photographs of Office, Shop & Go-down</h6>
+                        <input type="file" name="officePhotoGraphs" (change)="onFileSelect($event)" />
+                    </div>
+                    <div>
+                        <h6>8.Security Cheques</h6>
+                        <input type="file" name="securityCheque" (change)="onFileSelect($event)" />
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-info text-right">Upload</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,118 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Your Cart Products</h5>
+            </div>
+            <div class="card-body">
+                <div class="card">
+                    <main>
+
+                        <section class="summary">
+                            <div class="items">🛒 {{cartItems.length}} items</div>
+                            <div class="total"><b>Rs.{{summary.finalPriceAfterTax}}</b></div>
+                        </section>
+
+                        <section class="actions">
+                            <div class="form-group col-md-12 p-0">
+                                <form>
+                                    <div *ngIf="ifStatehead">
+                                        <label for="forWhom" style="float:left">For Whom:</label>
+                                        <input type="text" class="form-control" name="forWhom" [(ngModel)]="forWhom"
+                                            id="forWhom">
+                                    </div>
+                                    <div class=" text-center col-md-12">
+                                        <button class="btn btn-primary" type="submit"
+                                            (click)="open(mymodal)">{{orderButton}}</button>
+                                    </div>
+
+                                    <label for="inputZip" style="float:left">Enter OTP got on your Mobile:</label>
+                                    <input type="number" class="form-control" name="otp" [(ngModel)]="otp" id="otp">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <button class="btn btn-primary" type="submit" (click)="validateOTP()"
+                                                [disabled]="otp ===''"><span role="status"
+                                                    aria-hidden="true"></span>Verify</button>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button class="btn btn-primary" type="submit" (click)="placeOrder()"
+                                                [disabled]="!showbtn">Order</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </section>
+
+                        <section class="cart">
+                            <h5>Products:</h5>
+                            <ul>
+                                <li class="item" *ngFor="let cartItem of cartItems; let ndx = index">
+
+                                    <div class="name">{{ndx+1}}.{{cartItem.item}} {{cartItem.size}}
+                                        x <div class="value-button" id="decrease"
+                                            (click)="decreaseValue(cartItem.sNo,cartItem.basePrice, cartItem.quantity, cartItem.std_Pkg, cartItem.sku_Code)"
+                                            value="Decrease Value">-</div>
+                                        <input class="value-button" value={{cartItem.quantity}} type="number"
+                                            id={{cartItem.sku_Code}}>
+                                        <div class="value-button" id="increase"
+                                            (click)="increaseValue(cartItem.sNo,cartItem.basePrice, cartItem.quantity, cartItem.std_Pkg, cartItem.sku_Code)"
+                                            value="Increase Value">+</div>
+                                        <div class="value-button"><i class="fa fa-trash" style="color: red;"
+                                                (click)="deleteProduct(cartItem.sku_Code)"></i></div>
+                                    </div>
+                                    <p class="price">Rs.{{cartItem.discountedPrice }}</p>
+
+                                </li>
+                            </ul>
+                            <br>
+                            <br>
+                            <h6 class="text-right"><b>Total</b>&nbsp;&nbsp;
+                                &nbsp;&nbsp;<b>Rs&nbsp;&nbsp;{{summary.finalPriceWithoutTax}}</b></h6>
+                            <br>
+
+                            <br>
+                            <h6 class="text-right"><b>Total Price</b><i>(inclusive of GST
+                                    @18%)</i>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <b>Rs&nbsp;&nbsp;{{summary.finalPriceAfterTax}}</b>
+                            </h6>
+                            <p class="text-right"></p>
+                        </section>
+
+                    </main>
+                    <ng-template #mymodal let-modal>
+                        <div class="modal-header">
+                            <button type="button" class="close" aria-label="Close"
+                                (click)="modal.dismiss('Cross click')">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <h6>Terms & Conditions</h6>
+                            <div class="row">
+                                <li>GST will be charges as applicable.</li>
+                                <li>Prices are subject to change without notice Prevailing rates will be charged at the
+                                    time of dispatch.</li>
+                                <li>Company will not be responsible for incorrect application or design.</li>
+                                <li>supplies will be made as per the standard packing only.</li>
+                                <li>Full truck loads will be dispatched on FOR basis, unloading has to be done by
+                                    Concerned Channel Partner. Part truck loads are chargeable.</li>
+                                <li>Company does not encourage any dealings in cash. No cash payments will be accepted
+                                    by Company or any of their staff.</li>
+                                <li>All disputes are subjected to Nellore Jurisdiction</li>
+                                <p>&copy; Copyright Sentini Flopipes India Pvt Ltd.,2021</p>>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-info text-right"
+                                (click)="modal.close();sendOTP()">Accept &
+                                Order</button>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>

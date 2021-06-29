@@ -1,0 +1,116 @@
+<p-toast key="myKey1"></p-toast>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card demo-icons">
+            <div class="card-header">
+                <h5 class="card-title">UPVC Products</h5>
+                <p class="card-category">Handcrafted by our Men from
+                    <a href="">SENTINI</a>
+                </p>
+            </div>
+            <nav *ngIf="mainPage && !subPage && !prodPage" aria-label="breadcrumb" role="navigation">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page">UPVC</li>
+                </ol>
+            </nav>
+            <nav *ngIf="subPage && !mainPage && !prodPage" aria-label="breadcrumb" role="navigation">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item" (click)="showProdPage(1,'')">UPVC</li>
+                    <li class="breadcrumb-item active" aria-current="page">Categories</li>
+                </ol>
+            </nav>
+            <nav *ngIf=" prodPage && !mainPage && !subPage" aria-label="breadcrumb" role="navigation">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">UPVC</li>
+                    <li class="breadcrumb-item" (click)="showProdPage(2,'')">Categories</li>
+                    <li class="breadcrumb-item active" aria-current="page">Products</li>
+                </ol>
+            </nav>
+            <div class="row" *ngIf="mainPage" style="justify-content: center;margin: 50px 100px;">
+                <div class="card cus-card cardzoom" #btn1 style="width: 15rem;"
+                    (click)="toggle(btn1);  showProdPage(2,'');" id="Pipes">
+                    <img class="card-img-top" src="assets/img/SCH 40-3 Mtr Plain.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">UPVC Pipes</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">UPVC PLUMBING SYSTEM FOR COLD WATER</h6>
+                    </div>
+                </div>
+                <div class="card cus-card cardzoom" #btn2 style="width: 15rem;"
+                    (click)="toggle(btn2); showProdPage(2,'');" id="Fittings">
+                    <img class="card-img-top" src="assets/img/New category/UPVC Fittings.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">UPVC Fittings</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">UPVC PLUMBING FITTINGS</h6>
+                    </div>
+                </div>
+                <div class="card cus-card cardzoom" #btn3 style="width: 15rem;"
+                    (click)="toggle(btn3); showProdPage(2,'');" id="Solvents">
+                    <img class="card-img-top" src="assets/img/32-UPVC solvent.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">Solvents</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">FOR UPVC</h6>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="subPage && !mainPage && !prodPage">
+                <nav *ngIf="cardValue" aria-label="breadcrumb" role="navigation">
+                    <ol class="breadcrumb" style="background-color: #223d89;">
+                        <li *ngIf="cardValue == 'Pipes'" class="breadcrumb-item" style="color: white;">UPVC PIPES -HSN
+                            CODE :3917<br> SCH 40/80 PIPES
+                            Manufactured as per ASTM D 1785</li>
+                        <li *ngIf="cardValue == 'Fittings'" class="breadcrumb-item" style="color: white;">UPVC FITTINGS
+                            -HSN
+                            CODE :3917 SCH 80 FITTINGS
+                            Manufactured as per ASTM D 2467</li>
+                    </ol>
+                </nav>
+                <div class="row" style="justify-content: center;margin:0px;">
+
+                    <div *ngFor="let item of arr2; let i=index;let product">
+                        <div class="card cus-card" style="width: 15rem;">
+                            <img class="card-img-top" src="{{item.imgUrl}}" (click)="showProdPage(3,item);">
+                            <div class="card-body">
+                                <p class="card-title"><b>{{item.itemName}}</b></p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row r-margin" *ngIf="prodPage && !mainPage && !subPage">
+                <p-table [value]="prodArr">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>Skucode</th>
+                            <th>Description</th>
+                            <th>Size</th>
+                            <th>Std Pkg</th>
+                            <th>MRP</th>
+                            <th>Quantity</th>
+                            <th>Action</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-product>
+                        <tr>
+                            <td>{{product.sku_Code}}</td>
+                            <td>{{product.sku_Description}}</td>
+                            <td>{{product.size}}</td>
+                            <td>{{product.std_Pkg}}</td>
+                            <td>{{product.price}}</td>
+                            <td>
+                                <input [(ngModel)]="product.quantity" name="qty" type="number"
+                                    class="form-control col-md-12" id="qty">
+                            </td>
+                            <td>
+                                <button type="button" class="btn  btn-primary btn-round"
+                                    (click)="addProductToCart(product,product.quantity, index)">Add
+                                </button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </div>
+</div>

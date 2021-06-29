@@ -1,0 +1,136 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card ">
+      <div class="card-header ">
+        Orders
+      </div>
+      <div class="card-body ">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title"> All Orders</h4>
+            </div>
+            <div *ngIf="showDetails" class="card-header float-right">
+              <button class="btn btn-primary" (click)="showinfo(0)"> Back</button>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive" *ngIf="showOrder">
+                <table class="table">
+                  <thead class=" text-primary">
+                    <th>
+                      Dealer MailID
+                    </th>
+                    <th>
+                      Ordered Date
+                    </th>
+                    <!-- <th>
+                      Status
+                    </th> -->
+                    <th>Order Value</th>
+                    <th>
+                      Actions
+                    </th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let order of orders">
+                      <td>
+                        {{order.email}}
+                      </td>
+                      <td>
+                        {{order.orderDate| date : "short"}}
+                      </td>
+                      <!-- <td>
+                        <button *ngIf="approveButton !='Approved'" class="btn btn-primary" type="submit"
+                          (click)="approveSample(order._id)">Approve</button>
+                        <button *ngIf="approveButton =='Approved'" class="btn btn-primary"
+                          type="button">Approved</button>
+                      </td> -->
+                      <td>
+                        Rs.{{order.orderValue}}
+                      </td>
+                      <td><button class="btn btn-primary" (click)="showinfo(1,order._id);">Details</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div *ngIf="showDetails">
+                <table class="table">
+                  <thead class=" text-primary">
+                    <th>
+                      S.no
+                    </th>
+                    <th>
+                      Type
+                    </th>
+                    <th>
+                      Category
+                    </th>
+                    <th>Item</th>
+                    <th>
+                      Size
+                    </th>
+                    <th>Description</th>
+                    <th>Qty</th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let product of o_products;let ndx=index">
+                      <td>
+                        {{ndx+1}}
+                      </td>
+                      <td>
+                        {{product.productType}}
+                      </td>
+                      <td>
+                        {{product.productCategory}}
+                      </td>
+                      <td>
+                        {{product.item}}
+                      </td>
+                      <td>
+                        {{product.size}}
+                      </td>
+                      <td>
+                        {{product.sku_Description}}
+                      </td>
+                      <td>
+                        <b>{{product.quantity}}</b>
+                      </td>
+                      <td>
+                        <input type="text" class="form-control" placeholder="Samples Dispatched"
+                          [(ngModel)]="product.disQuantity">
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div *ngFor="let order of orders">
+                  <div *ngIf="ifStatehead">
+                    Parcel Tracking No: <b>{{order.docketNo}}</b>
+                  </div>
+                </div>
+
+
+                <div *ngIf="ifPlantLogin" class="form-row">
+                  <!-- <div class="form-group col-md-6">
+                    <input type="text" class="form-control" placeholder="Samples Requested">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <input type="text" class="form-control" placeholder="Samples Dispatched">
+                  </div> -->
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <input type="text" class="form-control" placeholder="Enter Docket No" [(ngModel)]="docket">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <button type="submit" class="btn btn-info text-right" (click)="submitOrder()">Sumbit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

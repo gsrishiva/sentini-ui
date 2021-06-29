@@ -1,0 +1,89 @@
+<div class="row">
+    <div class="col-md-12">
+        <button type="submit" class="btn btn-info text-right" (click)="showDistributorPage(1)">Distributor
+            Targets</button>
+        <div *ngIf="distributorPage" class="card demo-icons">
+            <div class="card-header">
+                <h5>Update Distributor Targets</h5>
+                <form [formGroup]="targetForm" (ngSubmit)="savetargetData()">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <select id="financialYear" class="form-control" formControlName="financialYear">
+                                <option selected>Choose Year...</option>
+                                <option>2021-2022</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <select class="form-control" name="firmName" class="form-control"
+                                formControlName="distributorId">
+                                <option *ngFor="let dealer of dealers" [ngValue]="dealer.id">{{dealer.firmName}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- <div class="form-group col-md-6">
+                            <input type="text" class="form-control" placeholder="Primary Sales" formControlName="primaryDissales">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="text" class="form-control" placeholder="Opening Stock" formControlName="openingStock">
+                        </div> -->
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div *ngIf="empPage" class="card demo-icons">
+            <div class="card-header">
+                <h5>Update Sales Targets</h5>
+                <form [formGroup]="targetForm" (ngSubmit)="savetargetData()">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <select id="emplyee" class="form-control" formControlName="emplyee">
+                                <option selected>Choose Employee</option>
+                                <option>Anand</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="text" class="form-control" placeholder="Primary Sales"
+                                formControlName="primaryTargetValue">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <input type="text" class="form-control" placeholder="Secondary Target"
+                                formControlName="secondaryTarget">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="text" class="form-control" placeholder="Collection Target"
+                                formControlName="collectionTarget">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <input type="text" class="form-control" placeholder="Secondary Target"
+                                formControlName="secondaryTarget">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="text" class="form-control" placeholder="Plumber Meet Target"
+                                formControlName="plumbermeetTargets">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <input type="text" class="form-control" placeholder="Retailer Appointments"
+                                formControlName="retailerTarget">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="text" class="form-control" placeholder="New Distributor Appointment"
+                                formControlName="distributorAppointments">
+                        </div>
+
+                        <div class="form-row">
+                            <button type="submit" class="btn btn-info text-right">Update</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

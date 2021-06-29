@@ -1,0 +1,95 @@
+<p-toast key="myKey1"></p-toast>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card demo-icons">
+      <div class="card-header">
+        <h5 class="card-title">All Dealers</h5>
+        <button type="submit" class="btn btn-info text-right" (click)="showReportPage(1)">Assign To StateHead</button>
+      </div>
+      <div *ngIf="listPage" class="card-body all-icons">
+        <div id="icons-wrapper">
+          <section>
+            <div class="table-responsive">
+              <table class="table">
+                <thead class=" text-primary">
+                  <th>
+                    Dealer Name
+                  </th>
+                  <th>
+                    E-mail
+                  </th>
+                  <th>
+                    Contact
+                  </th>
+                  <th>
+                    City
+                  </th>
+                  <th>
+                    Status
+                  </th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let user of users">
+                    <td>
+                      <a class="user" (click)="viewDocs(user._id)"> {{user.firmName}}</a>
+                    </td>
+                    <td>
+                      {{user.email}}
+                    </td>
+                    <td>
+                      {{user.mobileNo}}
+                    </td>
+                    <td>
+                      {{user.city}}
+                    </td>
+                    <td>
+                      <div>
+                        <label class="switch">
+                          <input type="checkbox" [(ngModel)]="user.status" value="user.status"
+                            (ngModelChange)="user.status=toggleValue ?'true':'false'" (click)="onChange(user)">
+                          <span class="slider"></span>
+                        </label>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </div>
+      <div *ngIf="assignPage">
+        <div class="card demo-icons">
+          <div class="card-header">
+            <form>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label>statehead</label>
+                  <select class="form-control" name="stateHeads" class="form-control" [(ngModel)]="stateheadId">
+                    <option *ngFor="let statehead of heads" [value]="statehead._id">
+                      {{statehead.firstName}}
+                    </option>
+                  </select>
+                </div>
+
+                <div class="form-group col-md-6">
+                  <label>Distributor</label>
+                  <select class="form-control" name="users" class="form-control" [(ngModel)]="distributorId">
+                    <option *ngFor="let distributor of distributors" [value]="distributor._id">
+                      {{distributor.firmName}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <button type="submit" class="btn btn-info" (click)="assignStateHead()">Assign</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

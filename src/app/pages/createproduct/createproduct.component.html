@@ -1,0 +1,94 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card demo-icons">
+      <div class="card-header">
+        <h5 class="card-title">Combo Products</h5>
+        <form [formGroup]="productForm" (ngSubmit)="postProducts()">
+          <div class="row">
+            <div class="form-group col-md-6">
+              <select id="inputState" class="form-control" placeholder="productType" formControlName="productType">
+                <option selected>Base type...</option>
+                <option>CPVC</option>
+                <option>UPVC</option>
+                <option>SWR</option>
+                <option>CASING</option>
+                <option>COLUMN</option>
+                <option>Agri</option>
+              </select>
+            </div>
+            <div class="form-group col-md-6">
+              <select id="inputState" class="form-control" placeholder="productCategory"
+                formControlName="productCategory">
+                <option selected>Combo type...</option>
+                <option>Pipes-Combo</option>
+                <option>Fittings-Combo</option>
+                <option>Solvents-Combo</option>
+                <option>Lubricants-Combo</option>
+              </select>
+            </div>
+            <div class="form-group col-md-6">
+              <input type="text" id="item" name="item" placeholder="item" formControlName="item" class="form-control">
+            </div>
+            <div class="form-group col-md-6">
+              <input type="text" id="sku_Code" name="sku_Code" placeholder="sku_Code" formControlName="sku_Code"
+                class="form-control">
+            </div>
+            <div class="form-group col-md-6">
+              <input type="text" id="price" name="price" formControlName="price" class="form-control">
+            </div>
+            <div class="form-group col-md-6">
+              <input type="text" id="dealDiscount" name="dealDiscount" formControlName="dealDiscount"
+                class="form-control">
+            </div>
+            <div class="form-group col-md-6">
+              <input type="text" id="disDiscount" name="disDiscount" formControlName="disDiscount" class="form-control">
+            </div>
+
+            <table class="table table-bordered" formArrayName="combos">
+              <tr>
+                <th colspan="5">Add Combo Products:</th>
+                <th width="150px"><button type="button" (click)="addQuantity()" class="btn btn-primary">Add
+                    More</button>
+                </th>
+              </tr>
+              <tr *ngFor="let combo of combos().controls; let i=index" [formGroupName]="i">
+                <td>
+                  Sku Description:<input type="text" formControlName="sku_Description" class="form-control">
+                </td>
+                <td>
+                  Size :
+                  <select id="size" class="form-control" placeholder="productCategory" formControlName="size">
+                    <option selected>size...</option>
+                    <option>1/2"</option>
+                    <option>3/4" x 3/4"</option>
+                    <option>1"</option>
+                    <option>1 1/2 "</option>
+                    <option>3/4 "</option>
+                  </select>
+                </td>
+                <td>
+                  Std_Pkg:
+                  <input type="text" formControlName="std_Pkg" class="form-control">
+                </td>
+                <td>
+                  Covers:
+                  <input type="text" formControlName="covers" class="form-control">
+                </td>
+                <td>
+                  Pcs per Cover:
+                  <input type="text" formControlName="pcs" class="form-control">
+                </td>
+                <td>
+                  <button type="button" (click)="removeQuantity(i)" class="btn btn-danger">Remove</button>
+                </td>
+              </tr>
+            </table>
+
+          </div>
+          <button type="submit" class="btn btn-primary">Create</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,91 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card demo-icons">
+            <div class="card-header">
+                <h5 class="card-title">COMBO Products</h5>
+                <p class="card-category">Handcrafted by our Men from
+                    <a href="">SENTINI</a>
+                </p>
+            </div>
+            <nav *ngIf="mainPage && !subPage && !prodPage" aria-label="breadcrumb" role="navigation">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page">COMBO's</li>
+                </ol>
+            </nav>
+            <nav *ngIf="subPage && !mainPage && !prodPage" aria-label="breadcrumb" role="navigation">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item" (click)="showProdPage(1,'')">COMBOS</li>
+                    <li class="breadcrumb-item active" aria-current="page">Categories</li>
+                </ol>
+            </nav>
+            <nav *ngIf=" prodPage && !mainPage && !subPage" aria-label="breadcrumb" role="navigation">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">COMBOS</li>
+                    <li class="breadcrumb-item" (click)="showProdPage(2,'')">Categories</li>
+                    <li class="breadcrumb-item active" aria-current="page">Products</li>
+                </ol>
+            </nav>
+
+
+            <!-- <div class="row" *ngIf="mainPage" style="justify-content: center;margin: 30px;">
+                <div class="card cus-card cardzoom" #btn4 style="width: 13rem;"
+                    (click)="toggle(btn4); showProdPage(2,'');" id="Fittings-Combo">
+                    <img class="card-img-top" src="assets/img/1.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">Combo's</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">FOR CPVC</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="subPage && !mainPage && !prodPage"
+                style="justify-content: center;margin: 50px 100px;">
+                <div *ngFor="let item of arr2; let i=index;let product">
+                    <div class="card cus-card" style="width: 15rem;">
+                        <img class="card-img-top" src="{{item.imgUrl}}" (click)="showProdPage(3,item);">
+                        <div class="card-body">
+                            <p class="card-title"><b>{{item.itemName}}</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+
+            <div class="row r-margin">
+                <p-table [value]="products">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>Item</th>
+                            <th>Skucode</th>
+                            <!-- <th>Description</th> -->
+                            <!-- <th>Size</th> -->
+                            <th>MRP</th>
+                            <!-- <th>Std Pkg</th> -->
+                            <th>Quantity</th>
+                            <th>Action</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-product>
+                        <tr>
+                            <td>{{product.item}}</td>
+                            <td>{{product.sku_Code}}</td>
+                            <!-- <td>{{product.sku_Description}}</td>
+                            <td class="badge badge-info" *ngFor="let item1 of product.size">
+                                {{item1}}</td> -->
+                            <td>{{product.price}}</td>
+                            <!-- <td class="badge badge-primary" *ngFor="let item2 of product.std_Pkg">{{item2}}</td> -->
+                            <td>
+                                <input [(ngModel)]="product.quantity" name="qty" type="number" min="0"
+                                    class="form-control col-md-12" id="qty">
+                            </td>
+                            <td>
+                                <button type="button" class="btn  btn-primary btn-round"
+                                    (click)="addProductToCart(product,product.quantity, index)">Add
+                                </button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </div>
+</div>

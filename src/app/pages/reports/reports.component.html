@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card demo-icons">
+            <div class="row r-margin">
+                <button type="submit" class="btn btn-info text-right" (click)="showReportPage(1)">Distributor
+                    Wise</button>
+                <button type="submit" class="btn btn-info text-right" (click)="showReportPage(2)">Employee Wise</button>
+                <button type=" submit" class="btn btn-info text-right" (click)="showReportPage(3)">State wise</button>
+            </div>
+            <div *ngIf="distributorPage">
+                <button type="submit" class="btn btn-info text-right" (click)="downloadFile()">Download
+                    Excel</button>
+
+                <table class="table-bordered">
+                    <thead>
+                        <th>Distributor Name</th>
+                        <th>Actuals</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let distributor of distributors">
+                            <td>{{distributor._id}}</td>
+                            <table>
+                                <thead>
+                                    <th>Month</th>
+                                    <th>Primary Target</th>
+                                    <th>Primary Sale</th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let month of distributor.monthlyData">
+                                        <td>{{month.month}}</td>
+                                        <td>{{month.primaryTargetValue}}</td>
+                                        <td>{{month.primarySalesValue}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div *ngIf="stateHeadPage && !distributorPage && !locationPage">
+                <h1>Employee wise Report</h1>
+            </div>
+            <div *ngIf="locationPage && !distributorPage && !stateHeadPage">
+                <h1>location wise report</h1>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card demo-icons">
+            <div class="card-header">
+                <h5 class="card-title">Files uploaded by dealer</h5>
+
+                <div class="info">
+                    <div class="icon icon-primary">
+                        <i class="nc-icon nc-paper"></i>
+                    </div>
+                    <h4 class="info-title">Documents</h4>
+                    <div id="Iframe-Cicis-Menu-To-Go"
+                        class="set-margin-cicis-menu-to-go set-padding-cicis-menu-to-go set-border-cicis-menu-to-go set-box-shadow-cicis-menu-to-go center-block-horiz">
+                        <div class="responsive-wrapper 
+                         responsive-wrapper-padding-bottom-90pct"
+                            style="-webkit-overflow-scrolling: touch; overflow: auto;">
+
+                            <div *ngFor="let userDoc of userDocs">
+                                <!-- <a href="">{{userDoc.fileUrl}}</a> -->
+                                <iframe src="{{userDoc.fileUrl}}"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-info" (click)="approveUser()">Approve</button>
+            </div>
+
+            <div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <select class="form-control" name="stateHeads" class="form-control">
+                            <option *ngFor="let statehead of stateHeadsList" [value]="statehead._id">
+                                {{statehead.firstName}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <select class="form-control" name="users" class="form-control">
+                            <option *ngFor="let user of userList" [value]="user._id">{{user.firmName}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <button type="submit" class="btn btn-info" (click)="assignStateHead()">Approve</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
